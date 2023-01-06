@@ -1,0 +1,17 @@
+{
+  "name": "phonebook-backend",
+  "version": "1.0.0",
+  "description": "node express practice",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"tests not made yet\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "Alan Coomes",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20"
+  }
+}
