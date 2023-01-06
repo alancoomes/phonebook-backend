@@ -54,14 +54,26 @@ app.delete('/api/persons/:id', (req, res) => {
   res.status(204).end()
 })
 
+const nameExists = (name) => {
+  const names = persons.map(p => p.name)
+  return names.includes(name)
+}
+
 app.post('/api/persons', (req, res) => {
   const body = req.body
   const newId = Math.floor(Math.random() * 10000)
-  if(!body.name) {
+  if (!body.name || !body.number) {
     return res.status(400).send({
-      error: "content missing"
+      error: "name and/or number missing"
     })
   }
+
+  if (nameExists(body.name)) {
+    return res.status(400).send({
+      error: "name must be unique"
+    })
+  }
+
   const newPerson = {
     "id": newId,
     "name": body.name || "",
